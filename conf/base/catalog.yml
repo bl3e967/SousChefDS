@@ -3,14 +3,15 @@
 # Documentation for this file format can be found in "The Data Catalog"
 # Link: https://docs.kedro.org/en/stable/data/data_catalog.html
 
-recipes_raw_nosource_ar:
-  type: json.JSONDataset
-  filepath: data/01_raw/recipes_raw/recipes_raw_nosource_ar.json
+recipes:
+  type: pandas.CSVDataset
+  filepath: 'data/01_raw/food-ingredients-and-recipes-dataset-kaggle/Food Ingredients and Recipe Dataset with Image Name Mapping.csv'
+  load_args:
+    index_col: 0
 
-recipes_raw_nosource_epi:
-  type: json.JSONDataset
-  filepath: data/01_raw/recipes_raw/recipes_raw_nosource_epi.json
+recipe_images:
+  type: partitions.PartitionedDataset
+  path: 'data/01_raw/food-ingredients-and-recipes-dataset-kaggle/Food Images/Food Images'
+  dataset: 
+    type: pillow.ImageDataset
 
-recipes_raw_nosource_fn:
-  type: json.JSONDataset
-  filepath: data/01_raw/recipes_raw/recipes_raw_nosource_fn.json
