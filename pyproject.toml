@@ -12,7 +12,7 @@ dependencies = [
     "jupyterlab>=3.0",
     "notebook",
     "kedro~=1.0.0",
-    "kedro-datasets[ibis]",
+    "kedro-datasets[partitions,pillow,pandas]",
     "duckdb",
     "recipe-scrapers",
     "beautifulsoup4",
