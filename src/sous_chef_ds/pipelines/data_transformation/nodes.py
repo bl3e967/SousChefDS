@@ -29,6 +29,7 @@ def normalise_recipe_df(raw_recipes_df:pd.DataFrame):
                 - ``recipe_index``
                 - ``Image_Name``
     """
+    raw_recipes_df = raw_recipes_df.reset_index(drop=False)
     recipe = raw_recipes_df[['index', 'Title', 'Instructions']]
     recipe_ingredients = (
         raw_recipes_df[['index', 'Cleaned_Ingredients']]
@@ -118,6 +119,7 @@ def get_exploded_ingredients_per_recipe_index(recipe_ingredients:pd.DataFrame):
 
     return (
         exploded_ingredients_per_recipe
+        .drop(columns='index')
         # replace the inherited recipes index with new row index
         .reset_index(drop=True)
         # make the newly created index a column
